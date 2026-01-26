@@ -1,0 +1,113 @@
+blueprint:
+  name: Pill Dispenser - Wöchentlicher Bericht
+  description: >
+    Sendet einen wöchentlichen Bericht über die Medikamenten-Einnahme.
+    Zeigt an wie viele Dosen genommen wurden und resettet den Counter.
+  domain: automation
+  input:
+    report_day:
+      name: Wochentag
+      description: An welchem Tag soll der Bericht gesendet werden?
+      default: 6
+      selector:
+        select:
+          options:
+            - label: Montag
+              value: 0
+            - label: Dienstag
+              value: 1
+            - label: Mittwoch
+              value: 2
+            - label: Donnerstag
+              value: 3
+            - label: Freitag
+              value: 4
+            - label: Samstag
+              value: 5
+            - label: Sonntag
+              value: 6
+    
+    report_time:
+      name: Uhrzeit
+      description: Wann soll der Bericht gesendet werden?
+      default: "20:00:00"
+      selector:
+        time: {}
+    
+    counter_entity:
+      name: Zähler
+      description: Counter Helper mit der Anzahl der Einnahmen
+      selector:
+        entity:
+          filter:
+            - domain: counter
+    
+    expected_doses:
+      name: Erwartete Dosen
+      description: Wie viele Dosen sollten genommen werden? (normalerweise 7)
+      default: 7
+      selector:
+        number:
+          min: 1
+          max: 31
+          mode: box
+    
+    medication_name:
+      name: Medikamenten-Name (Optional)
+      description: Input Text Helper mit dem Namen des Medikaments
+      default: {}
+      selector:
+        entity:
+          filter:
+            - domain: input_text
+    
+    notify_device:
+      name: Benachrichtigungs-Gerät
+      description: Gerät für Push-Benachrichtigungen
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+
+mode: single
+
+trigger:
+  - platform: time
+    at: !input report_time
+
+condition:
+  - condition: template
+    value_template: "{{ now().weekday() == report_day }}"
+
+action:
+  - variables:
+      taken_count: "{{ states(counter_entity) | int }}"
+      expected: !input expected_doses
+      missed: "{{ expected - taken_count }}"
+      med_name: !input medication_name
+  
+  - device_id: !input notify_device
+    domain: mobile_app
+    type: notify
+    title: "📊 Wöchentlicher Medikamenten-Bericht"
+    message: >
+      {% if med_name != {} %}
+      {{ states(med_name) }}:
+      {% else %}
+      Medikament:
+      {% endif %}
+      
+      ✅ Genommen: {{ taken_count }} von {{ expected }}
+      
+      {% if missed > 0 %}
+      ⚠️ Vergessen: {{ missed }} Dosen
+      {% else %}
+      🎉 Perfekt! Alle Medikamente genommen!
+      {% endif %}
+      
+      Einnahme-Quote: {{ (taken_count / expected * 100) | round(0) }}%
+  
+  # Reset Counter für nächste Woche
+  - service: counter.reset
+    target:
+      entity_id: !input counter_entity

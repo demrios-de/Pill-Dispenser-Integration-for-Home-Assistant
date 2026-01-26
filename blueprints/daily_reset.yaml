@@ -1,0 +1,33 @@
+blueprint:
+  name: Pill Dispenser - Täglicher Reset
+  description: >
+    Setzt alle "Heute genommen" Schalter um Mitternacht zurück.
+    Kann mehrere Medikamente auf einmal zurücksetzen.
+  domain: automation
+  input:
+    reset_time:
+      name: Reset-Zeit
+      description: Wann soll zurückgesetzt werden?
+      default: "00:00:00"
+      selector:
+        time: {}
+    
+    toggles_to_reset:
+      name: Schalter zum Zurücksetzen
+      description: Wähle alle "Heute genommen" Helper aus
+      selector:
+        entity:
+          filter:
+            - domain: input_boolean
+          multiple: true
+
+mode: single
+
+trigger:
+  - platform: time
+    at: !input reset_time
+
+action:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: !input toggles_to_reset

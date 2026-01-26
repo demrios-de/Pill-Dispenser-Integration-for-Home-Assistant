@@ -1,0 +1,7 @@
+{
+  "name": "Pill Dispenser",
+  "content_in_root": false,
+  "filename": "pill_dispenser",
+  "render_readme": true,
+  "domains": ["sensor", "button", "switch"]
+}

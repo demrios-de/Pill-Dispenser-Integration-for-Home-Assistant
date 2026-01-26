@@ -1,0 +1,11 @@
+{
+  "domain": "pill_dispenser",
+  "name": "Pill Dispenser",
+  "codeowners": ["@demrios-de"],
+  "config_flow": true,
+  "documentation": "https://github.com/demrios-de/Pill-Dispenser-Integration-for-Home-Assistant",
+  "issue_tracker": "https://github.com/demrios-de/Pill-Dispenser-Integration-for-Home-Assistant/issues",
+  "iot_class": "local_polling",
+  "requirements": [],
+  "version": "1.0.0"
+}

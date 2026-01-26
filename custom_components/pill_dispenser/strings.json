@@ -1,0 +1,77 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Pill Dispenser",
+        "description": "Enter the IP address of your Pill Dispenser",
+        "data": {
+          "host": "IP Address",
+          "name": "Name (optional)"
+        },
+        "data_description": {
+          "name": "Leave empty to use the default name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Pill Dispenser. Please check the IP address and ensure the device is accessible.",
+      "unknown": "Unexpected error occurred"
+    },
+    "abort": {
+      "already_configured": "This Pill Dispenser is already configured"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "tray_name": {
+        "name": "Tray {tray_id} Name"
+      },
+      "tray_color": {
+        "name": "Tray {tray_id} Color"
+      },
+      "tray_installed": {
+        "name": "Tray {tray_id} Installed"
+      },
+      "tray_enabled": {
+        "name": "Tray {tray_id} Enabled"
+      },
+      "tray_triggered": {
+        "name": "Tray {tray_id} Triggered"
+      },
+      "tray_dispensed": {
+        "name": "Tray {tray_id} Dispensed"
+      },
+      "tray_dismissed": {
+        "name": "Tray {tray_id} Dismissed"
+      },
+      "tray_time": {
+        "name": "Tray {tray_id} Alarm Time"
+      }
+    },
+    "button": {
+      "alarm_default": {
+        "name": "Play Default Alarm"
+      },
+      "alarm_custom": {
+        "name": "Play Alarm {alarm_id}"
+      },
+      "dispense": {
+        "name": "Dispense Current"
+      },
+      "dismiss": {
+        "name": "Dismiss Alarm"
+      },
+      "dropout": {
+        "name": "Drop Tray {tray_id}"
+      },
+      "fix": {
+        "name": "Fix Tray {tray_id}"
+      }
+    },
+    "switch": {
+      "tray_enabled": {
+        "name": "Tray {tray_id} Enabled"
+      }
+    }
+  }
+}

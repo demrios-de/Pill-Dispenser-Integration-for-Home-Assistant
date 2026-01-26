@@ -1,0 +1,77 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pill Dispenser einrichten",
+        "description": "Geben Sie die IP-Adresse Ihres Pill Dispensers ein",
+        "data": {
+          "host": "IP-Adresse",
+          "name": "Name (optional)"
+        },
+        "data_description": {
+          "name": "Lassen Sie dieses Feld leer, um den Standardnamen zu verwenden"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Pill Dispenser fehlgeschlagen. Bitte überprüfen Sie die IP-Adresse und stellen Sie sicher, dass das Gerät erreichbar ist.",
+      "unknown": "Ein unerwarteter Fehler ist aufgetreten"
+    },
+    "abort": {
+      "already_configured": "Dieser Pill Dispenser ist bereits konfiguriert"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "tray_name": {
+        "name": "Fach {tray_id} Name"
+      },
+      "tray_color": {
+        "name": "Fach {tray_id} Farbe"
+      },
+      "tray_installed": {
+        "name": "Fach {tray_id} Installiert"
+      },
+      "tray_enabled": {
+        "name": "Fach {tray_id} Aktiviert"
+      },
+      "tray_triggered": {
+        "name": "Fach {tray_id} Ausgelöst"
+      },
+      "tray_dispensed": {
+        "name": "Fach {tray_id} Ausgegeben"
+      },
+      "tray_dismissed": {
+        "name": "Fach {tray_id} Verworfen"
+      },
+      "tray_time": {
+        "name": "Fach {tray_id} Alarmzeit"
+      }
+    },
+    "button": {
+      "alarm_default": {
+        "name": "Standard-Alarm abspielen"
+      },
+      "alarm_custom": {
+        "name": "Alarm {alarm_id} abspielen"
+      },
+      "dispense": {
+        "name": "Aktuelles ausgeben"
+      },
+      "dismiss": {
+        "name": "Alarm deaktivieren"
+      },
+      "dropout": {
+        "name": "Fach {tray_id} ausgeben"
+      },
+      "fix": {
+        "name": "Fach {tray_id} justieren"
+      }
+    },
+    "switch": {
+      "tray_enabled": {
+        "name": "Fach {tray_id} Aktiviert"
+      }
+    }
+  }
+}
