@@ -1,0 +1,44 @@
+name: Feature Request
+description: Suggest a new feature
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature!
+  
+  - type: textarea
+    id: feature
+    attributes:
+      label: Feature Description
+      description: Describe the feature you'd like
+      placeholder: What would you like to see?
+    validations:
+      required: true
+  
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem it solves
+      description: What problem does this solve?
+      placeholder: This would help with...
+    validations:
+      required: true
+  
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternative solutions
+      description: Have you considered any alternatives?
+      placeholder: I've also thought about...
+  
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing issues
+          required: true
+        - label: This is not a duplicate request
+          required: true
