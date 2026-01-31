@@ -1,8 +1,7 @@
 # Home Assistant Pill Dispenser Integration
 
-[![GitHub release](https://img.shields.io/github/v/release/demrios-de/Pill-Dispenser-Integration-for-Home-Assistant)](https://github.com/demrios-de/Pill-Dispenser-Integration-for-Home-Assistant/releases)
-[![License](https://img.shields.io/github/license/demrios-de/Pill-Dispenser-Integration-for-Home-Assistant)](LICENSE)
 [![HACS](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [🇬🇧 English](#english) | [🇩🇪 Deutsch](#deutsch)
 
@@ -46,7 +45,7 @@ Control your [Shaztech Pill Dispenser](https://github.com/Shaztech/Pilldispenser
 - 43 buttons for control
 - 10 switches for status
 - Automatic updates every 30 seconds
-- Multi-language (EN, DE, FR)
+- Multi-language (EN, DE)
 
 ### Example
 
@@ -63,16 +62,11 @@ automation:
         message: "Time for medication"
 ```
 
-### Blueprints
+### Documentation
 
-Want to track medication intake? Use our pre-built blueprints:
-
-- **Medication Tracking** - Auto-track when dispensed
-- **Daily Reset** - Reset at midnight
-- **Reminders** - Notifications for forgotten meds
-- **Weekly Reports** - Statistics and summaries
-
-→ [Import Blueprints](blueprints/) | [Setup Guide](docs/BLUEPRINTS.md)
+- [Medication Tracking Examples](docs/MEDICATION_TRACKING.md)
+- [Dashboard Examples](docs/DASHBOARD_EXAMPLES.md)
+- [Add Translations](custom_components/pill_dispenser/TRANSLATIONS.md)
 
 ### Support
 
@@ -119,7 +113,7 @@ Steuere deinen [Shaztech Pill Dispenser](https://github.com/Shaztech/Pilldispens
 - 43 Buttons zur Steuerung
 - 10 Schalter für Status
 - Automatische Aktualisierung alle 30 Sekunden
-- Mehrsprachig (EN, DE, FR)
+- Mehrsprachig (EN, DE)
 
 ### Beispiel
 
@@ -136,16 +130,11 @@ automation:
         message: "Zeit für Medikamente"
 ```
 
-### Blueprints
+### Dokumentation
 
-Medikamenten-Einnahme tracken? Nutze unsere vorgefertigten Blueprints:
-
-- **Medikamenten-Tracking** - Automatisches Tracking
-- **Täglicher Reset** - Reset um Mitternacht
-- **Erinnerungen** - Benachrichtigungen bei vergessenen Medikamenten
-- **Wochenberichte** - Statistiken und Zusammenfassungen
-
-→ [Blueprints importieren](blueprints/) | [Setup-Anleitung](docs/BLUEPRINTS.md)
+- [Medikamenten-Tracking Beispiele](docs/MEDICATION_TRACKING.md)
+- [Dashboard Beispiele](docs/DASHBOARD_EXAMPLES.md)
+- [Übersetzungen hinzufügen](custom_components/pill_dispenser/TRANSLATIONS.md)
 
 ### Support
 

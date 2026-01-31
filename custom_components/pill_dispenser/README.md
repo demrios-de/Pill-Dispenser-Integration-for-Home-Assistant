@@ -33,7 +33,7 @@ Control your [Shaztech Pill Dispenser](https://github.com/Shaztech/Pilldispenser
 - 43 buttons (alarms, dispense, dismiss, fix)
 - 10 switches (tray status)
 - Automatic polling every 30 seconds
-- Multi-language support (EN, DE, FR)
+- Multi-language support (EN, DE)
 
 ### Sensors
 

@@ -67,7 +67,6 @@ class PillDispenserTraySensor(CoordinatorEntity, SensorEntity):
             "time": "Alarm Time",
         }
         
-        self._attr_name = f"Tray {tray_id} {type_names.get(sensor_type, sensor_type)}"
         self._attr_has_entity_name = True
         
         # Link to device

@@ -50,7 +50,6 @@ class PillDispenserAlarmButton(CoordinatorEntity, ButtonEntity):
         super().__init__(coordinator)
         self._attr_unique_id = f"{entry.entry_id}_alarm_default"
         self._attr_translation_key = "alarm_default"
-        self._attr_name = "Play Default Alarm"
         self._attr_icon = "mdi:bell-ring"
         self._attr_has_entity_name = True
         self._attr_device_info = DeviceInfo(
@@ -77,7 +76,6 @@ class PillDispenserCustomAlarmButton(CoordinatorEntity, ButtonEntity):
         self._attr_unique_id = f"{entry.entry_id}_alarm_{alarm_id}"
         self._attr_translation_key = "alarm_custom"
         self._attr_translation_placeholders = {"alarm_id": str(alarm_id)}
-        self._attr_name = f"Play Alarm {alarm_id}"
         self._attr_icon = "mdi:bell"
         self._attr_has_entity_name = True
         self._attr_device_info = DeviceInfo(
@@ -101,7 +99,6 @@ class PillDispenserDispenseButton(CoordinatorEntity, ButtonEntity):
         super().__init__(coordinator)
         self._attr_unique_id = f"{entry.entry_id}_dispense"
         self._attr_translation_key = "dispense"
-        self._attr_name = "Dispense Current"
         self._attr_icon = "mdi:pill"
         self._attr_has_entity_name = True
         self._attr_device_info = DeviceInfo(
@@ -128,7 +125,6 @@ class PillDispenserDropoutButton(CoordinatorEntity, ButtonEntity):
         self._attr_unique_id = f"{entry.entry_id}_dropout_{tray_id}"
         self._attr_translation_key = "dropout"
         self._attr_translation_placeholders = {"tray_id": str(tray_id)}
-        self._attr_name = f"Drop Tray {tray_id}"
         self._attr_icon = "mdi:arrow-down-bold-circle"
         self._attr_has_entity_name = True
         self._attr_device_info = DeviceInfo(
@@ -152,7 +148,6 @@ class PillDispenserDismissButton(CoordinatorEntity, ButtonEntity):
         super().__init__(coordinator)
         self._attr_unique_id = f"{entry.entry_id}_dismiss"
         self._attr_translation_key = "dismiss"
-        self._attr_name = "Dismiss Alarm"
         self._attr_icon = "mdi:bell-off"
         self._attr_has_entity_name = True
         self._attr_device_info = DeviceInfo(
@@ -179,7 +174,6 @@ class PillDispenserFixButton(CoordinatorEntity, ButtonEntity):
         self._attr_unique_id = f"{entry.entry_id}_fix_{tray_id}"
         self._attr_translation_key = "fix"
         self._attr_translation_placeholders = {"tray_id": str(tray_id)}
-        self._attr_name = f"Fix Tray {tray_id}"
         self._attr_icon = "mdi:wrench"
         self._attr_has_entity_name = True
         self._attr_device_info = DeviceInfo(
