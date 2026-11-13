@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## - 2026-11-13
 
+### Added
+- **Local Brand Assets (`brand/`)**: Added custom `icon.png`, `icon@2x.png`, and `logo.png` inside `custom_components/pill_dispenser/brand/` so Home Assistant (2026.3+) displays the Pill Dispenser icon and logo natively without relying on the external brands repository.
+
+
+## - 2026-11-13
+
 > **Compatibility Note:** All new API-based features below require the corresponding firmware update on the Pill Dispenser (currently submitted as a Pull Request to `Shaztech/Pilldispenser`). When connected to older firmware versions, the integration automatically falls back to legacy polling so existing setups continue working without changes.
 
 ### Added
