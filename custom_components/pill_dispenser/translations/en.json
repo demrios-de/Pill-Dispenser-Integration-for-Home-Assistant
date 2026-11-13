@@ -1,9 +1,4 @@
 {
-  "_meta": {
-    "contributors": [
-      "Original Author"
-    ]
-  },
   "config": {
     "step": {
       "user": {
@@ -51,6 +46,15 @@
       },
       "tray_time": {
         "name": "Tray {tray_id} Alarm Time"
+      },
+      "diag_rssi": {
+        "name": "Wi-Fi Signal Strength"
+      },
+      "diag_free_heap": {
+        "name": "Free Heap Memory"
+      },
+      "diag_uptime_sec": {
+        "name": "Uptime"
       }
     },
     "button": {
@@ -71,11 +75,22 @@
       },
       "fix": {
         "name": "Fix Tray {tray_id}"
+      },
+      "displace": {
+        "name": "Advance Tray {tray_id}"
       }
     },
     "switch": {
       "tray_enabled": {
         "name": "Tray {tray_id} Enabled"
+      },
+      "tray_paused": {
+        "name": "Tray {tray_id} Holiday Mode"
+      }
+    },
+    "update": {
+      "firmware": {
+        "name": "Firmware"
       }
     }
   }

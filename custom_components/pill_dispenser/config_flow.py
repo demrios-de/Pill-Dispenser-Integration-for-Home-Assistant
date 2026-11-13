@@ -1,11 +1,9 @@
-"""Config flow for Pill Dispenser integration."""
 from __future__ import annotations
 
+import asyncio
 import logging
 from typing import Any
 
-import aiohttp
-import async_timeout
 import voluptuous as vol
 
 from homeassistant import config_entries
@@ -27,54 +25,46 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 
 
 async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str, Any]:
-    """Validate the user input allows us to connect."""
-    host = data[CONF_HOST]
-    
-    # Remove http:// or https:// if present
-    host = host.replace("http://", "").replace("https://", "")
-    
-    # Test connection by trying to get tray 1 name
+    host = data[CONF_HOST].strip()
+    host = host.replace("http://", "").replace("https://", "").rstrip("/")
+
     session = async_get_clientsession(hass)
-    url = f"http://{host}/tr_name?id=1"
-    
+
     try:
-        async with async_timeout.timeout(10):
-            async with session.get(url) as response:
+        async with asyncio.timeout(10):
+            async with session.get(f"http://{host}/api/status") as response:
                 if response.status != 200:
-                    raise ConnectionError("Cannot connect to pill dispenser")
+                    async with session.get(f"http://{host}/tr_name?id=1") as legacy_resp:
+                        if legacy_resp.status != 200:
+                            raise ConnectionError("Cannot connect to pill dispenser")
     except Exception as err:
-        raise ConnectionError(f"Cannot connect to pill dispenser: {err}")
-    
-    # Use custom name if provided, otherwise use default
-    name = data.get(CONF_NAME, f"Pill Dispenser ({host})")
-    
+        raise ConnectionError(f"Cannot connect to pill dispenser: {err}") from err
+
+    name = data.get(CONF_NAME) or f"Pill Dispenser ({host})"
     return {"title": name, "host": host, "name": name}
 
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Pill Dispenser."""
 
     VERSION = 1
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
-        """Handle the initial step."""
         errors: dict[str, str] = {}
-        
+
         if user_input is not None:
             try:
                 info = await validate_input(self.hass, user_input)
             except ConnectionError:
                 errors["base"] = "cannot_connect"
-            except Exception:  # pylint: disable=broad-except
+            except Exception:
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
             else:
-                # Set unique ID based on host
                 await self.async_set_unique_id(info["host"])
                 self._abort_if_unique_id_configured()
-                
+
                 return self.async_create_entry(
                     title=info["title"],
                     data={

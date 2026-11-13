@@ -42,10 +42,20 @@ Control your [Shaztech Pill Dispenser](https://github.com/Shaztech/Pilldispenser
 ### Features
 
 - 80 sensors for all tray information
-- 43 buttons for control
-- 10 switches for status
-- Automatic updates every 30 seconds
+- 43 buttons for control (alarms, dispense, dismiss, fix)
+- 10 switches for tray enabled status
 - Multi-language (EN, DE)
+
+#### 🆕 New in v1.1.0 *(requires updated Pill Dispenser firmware – pending merge of PR in `Shaztech/Pilldispenser`)*
+> **Note:** On older dispenser firmware versions, the integration automatically falls back to standard 30-second polling and keeps all core features working seamlessly.
+
+- **Real-time Webhook Push (`/api/ha_webhook`)**: Instant state updates in Home Assistant without polling delay
+- **Batched Status API (`/api/status`)**: Fetches all states in 1 request instead of 80
+- **10 Holiday / Pause Mode Switches**: Pause or resume scheduled alerts per tray (`/tray_pause`)
+- **10 Advance Tray Buttons & `pill_dispenser.displace` Service**: Advance any tray by 1 step via button or 1–30 steps via service (`/displace`)
+- **3 Diagnostic Sensors**: Wi-Fi signal strength (RSSI), free heap memory & device uptime
+- **Firmware Update Entity**: Check for new GitHub releases and install OTA updates directly from Home Assistant
+
 
 ### Example
 
@@ -110,10 +120,20 @@ Steuere deinen [Shaztech Pill Dispenser](https://github.com/Shaztech/Pilldispens
 ### Funktionen
 
 - 80 Sensoren für alle Fach-Informationen
-- 43 Buttons zur Steuerung
-- 10 Schalter für Status
-- Automatische Aktualisierung alle 30 Sekunden
+- 43 Buttons zur Steuerung (Alarme, Ausgabe, Alarm deaktivieren, Justieren)
+- 10 Schalter für den Fach-Status
 - Mehrsprachig (EN, DE)
+
+#### 🆕 Neu in v1.1.0 *(erfordert aktualisierte Pill-Dispenser-Firmware – sobald der Pull Request in `Shaztech/Pilldispenser` angenommen wurde)*
+> **Hinweis:** Mit älteren Firmware-Versionen fällt die Integration automatisch auf das bisherige 30-Sekunden-Polling zurück – alle Grundfunktionen laufen weiterhin ohne Einschränkung.
+
+- **Echtzeit-Push per Webhook (`/api/ha_webhook`)**: Sofortige Status-Aktualisierung in Home Assistant ohne Polling-Verzögerung
+- **Gebündelte Status-API (`/api/status`)**: Ruft alle Daten in 1 Anfrage statt 80 Einzelabfragen ab
+- **10 Urlaubs- / Pause-Modus-Schalter**: Pausiert oder aktiviert geplante Alarme pro Fach (`/tray_pause`)
+- **10 Vorschieben-Buttons & Dienst `pill_dispenser.displace`**: Schiebt ein Fach per Button um 1 Schritt oder per Dienst um 1–30 Schritte vor (`/displace`)
+- **3 Diagnose-Sensoren**: WLAN-Signalstärke (RSSI), freier Speicher & Laufzeit
+- **Firmware-Update-Entität**: Prüft GitHub-Releases und startet OTA-Updates direkt aus Home Assistant
+
 
 ### Beispiel
 

@@ -1,9 +1,4 @@
 {
-  "_meta": {
-    "contributors": [
-      "Original Author"
-    ]
-  },
   "config": {
     "step": {
       "user": {
@@ -51,6 +46,15 @@
       },
       "tray_time": {
         "name": "Fach {tray_id} Alarmzeit"
+      },
+      "diag_rssi": {
+        "name": "WLAN-Signalstärke"
+      },
+      "diag_free_heap": {
+        "name": "Freier Speicher"
+      },
+      "diag_uptime_sec": {
+        "name": "Laufzeit"
       }
     },
     "button": {
@@ -71,11 +75,22 @@
       },
       "fix": {
         "name": "Fach {tray_id} justieren"
+      },
+      "displace": {
+        "name": "Fach {tray_id} vorschieben"
       }
     },
     "switch": {
       "tray_enabled": {
         "name": "Fach {tray_id} Aktiviert"
+      },
+      "tray_paused": {
+        "name": "Fach {tray_id} Urlaubsmodus"
+      }
+    },
+    "update": {
+      "firmware": {
+        "name": "Firmware"
       }
     }
   }

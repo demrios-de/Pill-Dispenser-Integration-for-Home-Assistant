@@ -35,7 +35,8 @@ async def async_setup_entry(
     for tray_id in range(1, 11):
         entities.append(PillDispenserDropoutButton(coordinator, entry, tray_id))
         entities.append(PillDispenserFixButton(coordinator, entry, tray_id))
-    
+        entities.append(PillDispenserDisplaceButton(coordinator, entry, tray_id))
+
     async_add_entities(entities)
 
 
@@ -183,4 +184,36 @@ class PillDispenserFixButton(CoordinatorEntity, ButtonEntity):
     async def async_press(self) -> None:
         """Handle the button press."""
         await self.coordinator.async_call_endpoint("fix", {"tray": self._tray_id})
+        await self.coordinator.async_request_refresh()
+
+class PillDispenserDisplaceButton(CoordinatorEntity, ButtonEntity):
+
+    def __init__(
+        self,
+        coordinator: PillDispenserCoordinator,
+        entry: ConfigEntry,
+        tray_id: int,
+    ) -> None:
+        super().__init__(coordinator)
+        self._tray_id = tray_id
+        self._attr_unique_id = f"{entry.entry_id}_displace_{tray_id}"
+        self._attr_translation_key = "displace"
+        self._attr_translation_placeholders = {"tray_id": str(tray_id)}
+        self._attr_icon = "mdi:step-forward"
+        self._attr_has_entity_name = True
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, coordinator.host)},
+        )
+
+    @property
+    def available(self) -> bool:
+        if self.coordinator.data is None or not self.coordinator.supports_enhanced_api:
+            return False
+        tray_data = self.coordinator.data.get("trays", {}).get(self._tray_id, {})
+        return tray_data.get("installed", "0") == "1" and super().available
+
+    async def async_press(self) -> None:
+        await self.coordinator.async_call_endpoint(
+            "displace", {"tray": self._tray_id, "steps": 1}
+        )
         await self.coordinator.async_request_refresh()

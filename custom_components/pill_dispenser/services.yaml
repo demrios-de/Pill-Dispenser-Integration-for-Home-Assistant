@@ -1,0 +1,24 @@
+displace:
+  name: Advance tray
+  description: Advance a specific tray by 1 to 30 steps (useful when refilling or resetting).
+  fields:
+    tray:
+      name: Tray number
+      description: Tray number (1 to 10)
+      required: true
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 10
+          mode: box
+    steps:
+      name: Steps
+      description: Number of steps to advance (1 to 30)
+      required: false
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 30
+          mode: box
